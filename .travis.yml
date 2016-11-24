@@ -1,4 +1,4 @@
-sudo: required
+,sudo: required
 
 language: generic
 
@@ -24,4 +24,5 @@ before_install:
 
 install:
   - wget https://raw.githubusercontent.com/kaladzeac/beginner_tutorials/master/.travis.install.sh
-  - bash .travis.install.sh
+
+script: "bash -c ./.travis.install.sh"
