@@ -1,0 +1,27 @@
+sudo: required
+
+language: generic
+
+compiler:
+  - gcc
+
+services:
+  - docker
+
+env:
+  global:
+    - CATKIN_WS=~/catkin_ws
+    - CATKIN_WS_SRC=${CATKIN_WS}/src
+    - CATKIN_WS_UNDERLAY=~/catkin_ws_underlay
+    - CATKIN_WS_UNDERLAY_SRC=${CATKIN_WS_UNDERLAY}/src
+    - CI_ROS_DISTRO="kinetic"
+    - ROS_PARALLEL_JOBS=-j1
+    - DEFAULT_ROSINSTALL="https://raw.githubusercontent.com/kaladzeac/beginner_tutorials/master/.travis.rosinstall"
+
+before_install:
+  - docker pull ubuntu:16.04
+  - docker run -t -i ubuntu /bin/bash
+
+install:
+  - wget https://raw.githubusercontent.com/kaladzeac/beginner_tutorials/master/.travis.install.sh
+  - bash .travis.install.sh
